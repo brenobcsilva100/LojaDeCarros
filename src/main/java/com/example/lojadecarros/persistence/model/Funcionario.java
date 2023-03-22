@@ -1,5 +1,6 @@
 package com.example.lojadecarros.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,9 +14,11 @@ public class Funcionario implements Serializable {
     private Long id;
     private String nome;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "funcionario")
     private List<Cliente> clientes;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "loja_id")
     private Loja loja;
